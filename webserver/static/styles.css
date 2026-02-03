@@ -1,0 +1,165 @@
+
+.wrapper {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	min-height: 50vh;
+
+}
+
+/* ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+} */
+
+/* li {
+    display: block;
+    /* float: left; */
+    /* position: relative; */
+    /* margin: 0 .78125% 50px; */
+
+/* h3 {
+    font-size:30px;
+} */
+section {
+    height: auto;
+} 
+
+
+/* Base */
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #caccd0;
+  --card: #080808;
+  --text: #041327;
+  --muted: #0d0e0e;
+  --border: rgba(255, 255, 255, 0.12);
+  --focus: rgba(120, 180, 255, 0.35);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+body {
+  
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(166, 184, 228, 0.25), transparent 60%),
+              radial-gradient(900px 500px at 80% 10%, rgba(90, 162, 255, 0.18), transparent 55%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+main {
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 0 16px;
+}
+
+
+
+/* Form card */
+#holidayForm {
+    position:sticky;
+    top: 10px;
+    z-index: 5;
+  background: rgba(250, 248, 248, 0.859);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 5%;
+  box-shadow: var(--shadow);
+    margin-left: auto;
+    margin-right: auto;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr auto;
+}
+
+#holidayForm label {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+#holidayForm select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.444);
+  color: var(--text);
+  outline: none;
+}
+
+#holidayForm select:focus {
+  border-color: rgba(120, 180, 255, 0.55);
+  box-shadow: 0 0 0 4px var(--focus);
+}
+
+#holidayForm button {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 180, 255, 0.4);
+  background: linear-gradient(180deg, rgba(120, 180, 255, 0.35), rgba(120, 180, 255, 0.18));
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 120ms ease, filter 120ms ease;
+  white-space: nowrap;
+}
+
+#holidayForm button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+#holidayForm button:active {
+  transform: translateY(0);
+  filter: brightness(0.98);
+}
+
+/* Results list */
+#holidayList {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+#holidayList li {
+  background: rgba(255, 255, 255, 0.851);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+#holidayList li strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+#holidayList li .meta {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  #holidayForm {
+    grid-template-columns: 1fr;
+  }
+  #holidayForm select,
+  #holidayForm button {
+    font-size: 18px;
+  }
+}
+
+
+  
