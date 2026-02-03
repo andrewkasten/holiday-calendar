@@ -1,5 +1,5 @@
 
-docker-compose up -d --build
+docker compose up -d --build
 
 # make sure the postgres container is ready, then run migrations
 sleep 5

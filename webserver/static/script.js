@@ -8,7 +8,7 @@ const holidays = document.querySelector('#holidayForm')
 const selectCountry = document.querySelector('#selectCountry')
 const selectYear = document.querySelector('#selectYear')
 const holidayList = document.querySelector('#holidayList')
-const baseAPI = `${BASE_URL}/api/v1/holidays`
+const baseAPI = `${BASE_URL}:8000/api/v1/holidays`
 
 
 // const fetchResults = async () => {
@@ -167,7 +167,7 @@ const signUp = (uname, pword) => {
     body: JSON.stringify(data)
   }
   console.log('signUp',context)
-  basicFetch("http://127.0.0.1:8000/accounts/signup", context)
+  basicFetch(`${BASE_URL}:8000/accounts/signup`, context)
 }
 
 const getToken = async (uname, pword) => {
@@ -179,7 +179,7 @@ const getToken = async (uname, pword) => {
     },
     body: JSON.stringify(data)
   }
-  const body = await basicFetch("http://127.0.0.1:8000/accounts/get-token", context)
+  const body = await basicFetch(`${BASE_URL}:8000/accounts/get-token`, context)
   return body["token"]
 }
 
@@ -192,7 +192,7 @@ const fetchResults = async () => {
       "Authorization": `Token ${token}`
     }
   }
-  return basicFetch("http://127.0.0.1:8000/api/v1/holidays", context)
+  return basicFetch(`${BASE_URL}:8000/api/v1/holidays`, context)
 }
 
 
