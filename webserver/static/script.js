@@ -2,13 +2,14 @@
 // own dictionary from api
 // or get each value from api
 
-const BASE_URL = window.location.protocol + '//' + window.location.host;
+const BASE_URL = window.location.protocol + '//' + window.location.host + '/api';
 
 const holidays = document.querySelector('#holidayForm')
 const selectCountry = document.querySelector('#selectCountry')
 const selectYear = document.querySelector('#selectYear')
 const holidayList = document.querySelector('#holidayList')
-const baseAPI = `${BASE_URL}:8000/api/v1/holidays`
+const baseAPI = `${BASE_URL}`
+const baseCalAPI = '/v1/holidays/'
 
 
 // const fetchResults = async () => {
@@ -30,7 +31,7 @@ holidayForm.addEventListener('submit', async (page) =>{
     const country = selectCountry.value
     const year = selectYear.value
 
-    const url = `${baseAPI}/${country}/${year}/`
+    const url = `${baseAPI}${baseCalAPI}${country}/${year}/`
     await getHolidays(url)
 
 })
@@ -82,7 +83,7 @@ async function getHolidays(url) {
 }
 }
 catch (err) {
-    console.error(err)
+    //console.error(err)
     holidayList.innerHTML = "<li>Failed to load holidays, have you signed in?</li>"
   }
 }
@@ -94,7 +95,7 @@ const basicFetch = async (url, context) => {
     
     if (!response.ok) {
       const errorText = await response.text(); 
-      throw new Error(`HTTP Error ${response.status}: ${errorText}`);
+      throw new Error(`HTTP Error ${response.status}: ${JSON.stringify(errorText)}`);
     }
 
     const body = await response.json();
@@ -167,7 +168,7 @@ const signUp = (uname, pword) => {
     body: JSON.stringify(data)
   }
   console.log('signUp',context)
-  basicFetch(`${BASE_URL}:8000/accounts/signup`, context)
+  basicFetch(`${BASE_URL}/accounts/signup`, context)
 }
 
 const getToken = async (uname, pword) => {
@@ -179,7 +180,7 @@ const getToken = async (uname, pword) => {
     },
     body: JSON.stringify(data)
   }
-  const body = await basicFetch(`${BASE_URL}:8000/accounts/get-token`, context)
+  const body = await basicFetch(`${BASE_URL}/accounts/get-token`, context)
   return body["token"]
 }
 
@@ -192,7 +193,7 @@ const fetchResults = async () => {
       "Authorization": `Token ${token}`
     }
   }
-  return basicFetch(`${BASE_URL}:8000/api/v1/holidays`, context)
+  return basicFetch(`${BASE_URL}`, context)
 }
 
 
@@ -206,7 +207,7 @@ window.onload = () => {
   login.onsubmit = (e) => handleAuthLogin(e)
   // getInfo.onclick = async () => {
   //   const body = await fetchResults()
-  //   writeWineApiResults(body)
+  //   writeWineApiResults(bodyh
   // }
   logout.onclick = () => localStorage.removeItem("token")
 }
